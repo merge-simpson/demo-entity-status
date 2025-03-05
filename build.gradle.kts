@@ -34,6 +34,8 @@ repositories {
 }
 
 dependencies {
+    val queryDslVersion = dependencyManagement.importedProperties["querydsl.version"]
+
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
@@ -59,8 +61,8 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
 
     // querydsl
-    implementation("com.querydsl:querydsl-jpa:${dependencyManagement.importedProperties["querydsl.version"]}:jakarta")
-    annotationProcessor("com.querydsl:querydsl-apt:${dependencyManagement.importedProperties["querydsl.version"]}:jakarta")
+    implementation("com.querydsl:querydsl-jpa:$queryDslVersion:jakarta")
+    annotationProcessor("com.querydsl:querydsl-apt:$queryDslVersion:jakarta")
 
     // test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
